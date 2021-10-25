@@ -16,11 +16,11 @@ async def test_aio_one_sms_cost(httpx_mock: HTTPXMock):
                     "status": "OK",
                     "status_code": 100,
                     "cost": 0.50,
-                    "sms": 2
+                    "sms": 2,
                 }
             },
             "total_cost": 1.00,
-            "total_sms": 2
+            "total_sms": 2,
         },
     )
     client = AioSMSru("apfel")
@@ -44,11 +44,11 @@ def test_one_sms_cost(httpx_mock: HTTPXMock):
                     "status": "OK",
                     "status_code": 100,
                     "cost": 0.50,
-                    "sms": 2
+                    "sms": 2,
                 }
             },
             "total_cost": 1.00,
-            "total_sms": 2
+            "total_sms": 2,
         },
     )
     client = SMSru("apfel")
@@ -73,16 +73,16 @@ async def test_aio_any_sms_one_text_cost(httpx_mock: HTTPXMock):
                     "status": "OK",
                     "status_code": 100,
                     "cost": 0.50,
-                    "sms": 2
+                    "sms": 2,
                 },
                 "79956896018": {
                     "status": "ERROR",
                     "status_code": 207,
-                    "status_text": "Джигурда"
-                }
+                    "status_text": "Джигурда",
+                },
             },
             "total_cost": 1.00,
-            "total_sms": 2
+            "total_sms": 2,
         },
     )
     client = AioSMSru("apfel")
@@ -106,16 +106,16 @@ def test_aio_send_any_sms(httpx_mock: HTTPXMock):
                     "status": "OK",
                     "status_code": 100,
                     "cost": 0.50,
-                    "sms": 2
+                    "sms": 2,
                 },
                 "79956896018": {
                     "status": "ERROR",
                     "status_code": 207,
-                    "status_text": "Юра, мы всё просрали"
-                }
+                    "status_text": "Юра, мы всё просрали",
+                },
             },
             "total_cost": 1.00,
-            "total_sms": 2
+            "total_sms": 2,
         },
     )
     client = SMSru("apfel")
