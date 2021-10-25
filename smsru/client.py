@@ -3,6 +3,7 @@ import sys
 
 from smsru.models import SMSruWithBalance
 from smsru.models.limits import SMSruLimit, SMSruFreeLimit
+from smsru.models.senders import SMSruSenders
 
 if sys.version_info >= (3, 9):
     from collections.abc import Sequence
@@ -184,3 +185,8 @@ class SMSru:
         response = self._request("my/free")
 
         return SMSruFreeLimit(**response.json())
+
+    def senders(self):
+        response = self._request("my/senders")
+
+        return SMSruSenders(**response.json())
