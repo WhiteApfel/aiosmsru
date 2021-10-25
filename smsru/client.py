@@ -3,7 +3,8 @@ from httpx import Client
 
 
 class SMSru:
-    def __init__(self):
+    def __init__(self, api_id: str):
+        self._api_id = api_id
         self._client: Optional[Client] = None
 
     @property
