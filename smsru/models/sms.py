@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict
 
 from . import SMSruWithBalance, SMSruBase
 
@@ -8,4 +8,4 @@ class SMSruSendSms(SMSruBase):
 
 
 class SMSruSendSmsResponse(SMSruWithBalance):
-    sms: dict[str, SMSruSendSms]
+    sms: Dict[str, SMSruSendSms]
