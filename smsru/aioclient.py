@@ -40,7 +40,7 @@ class AioSMSru:
         return response
 
     async def send_sms(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
+        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
     ) -> SMSruSendSmsResponse:
         params = {}
         if (  # More than one recipient
@@ -96,6 +96,8 @@ class AioSMSru:
                 "Recipients must be str (phone number) or sequence of str (phone numbers)"
             )
 
+        params.update(kwargs)
+
         response = await self._request("sms/send", params)
 
         return SMSruSendSmsResponse(**response.json())
@@ -113,7 +115,7 @@ class AioSMSru:
         return SMSruCheckSmsResponse(**response.json())
 
     async def sms_cost(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
+        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
     ) -> SMSruSmsCostResponse:
         params = {}
         if (  # More than one recipient
@@ -168,6 +170,8 @@ class AioSMSru:
             raise ValueError(
                 "Recipients must be str (phone number) or sequence of str (phone numbers)"
             )
+
+        params.update(kwargs)
 
         response = await self._request("sms/cost", params)
 

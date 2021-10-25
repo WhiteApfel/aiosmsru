@@ -38,7 +38,7 @@ class SMSru:
         return response
 
     def send_sms(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
+        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
     ) -> SMSruSendSmsResponse:
         params = {}
         if (  # More than one recipient
@@ -94,6 +94,8 @@ class SMSru:
                 "Recipients must be str (phone number) or sequence of str (phone numbers)"
             )
 
+        params.update(kwargs)
+
         response = self._request("sms/send", params)
 
         return SMSruSendSmsResponse(**response.json())
@@ -111,7 +113,7 @@ class SMSru:
         return SMSruCheckSmsResponse(**response.json())
 
     def sms_cost(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
+        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
     ) -> SMSruSmsCostResponse:
         params = {}
         if (  # More than one recipient
@@ -166,6 +168,8 @@ class SMSru:
             raise ValueError(
                 "Recipients must be str (phone number) or sequence of str (phone numbers)"
             )
+
+        params.update(kwargs)
 
         response = self._request("sms/cost", params)
 
