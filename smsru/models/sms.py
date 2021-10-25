@@ -17,3 +17,14 @@ class SMSruCheckSms(SMSruBase):
 
 class SMSruCheckSmsResponse(SMSruWithBalance):
     sms: Dict[str, SMSruCheckSms]
+
+
+class SMSruSmsCost(SMSruBase):
+    cost: Optional[float]
+    sms: Optional[int]
+
+
+class SMSruSmsCostResponse(SMSruBase):
+    sms: Dict[str, SMSruSmsCost]
+    total_cost: float
+    total_sms: int
