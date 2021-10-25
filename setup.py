@@ -36,5 +36,5 @@ setup(
     license="Mozilla Public License 2.0",
     classifiers=classifiers,
     keywords="sms wrapper api russia",
-    install_requires=requirements()
+    install_requires=requirements(),
 )
