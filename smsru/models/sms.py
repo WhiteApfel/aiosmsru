@@ -4,7 +4,7 @@ from . import SMSruWithBalance, SMSruBase
 
 
 class SMSruSendSms(SMSruBase):
-    sms_id: str
+    sms_id: Optional[str]
 
 
 class SMSruSendSmsResponse(SMSruWithBalance):
