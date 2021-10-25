@@ -7,7 +7,7 @@ from smsru import AioSMSru, SMSru
 @pytest.mark.asyncio
 async def test_aio_balance(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
-        url="https://sms.ru/my/balance?api_id=apfel&json=1",
+        url="https://sms.ru/my/balance?api_id=apfel&json=1&partner_id=331687",
         json={"status": "OK", "status_code": 100, "balance": 4762.58},
     )
     client = AioSMSru("apfel")
@@ -19,7 +19,7 @@ async def test_aio_balance(httpx_mock: HTTPXMock):
 
 def test_balance(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
-        url="https://sms.ru/my/balance?api_id=apfel&json=1",
+        url="https://sms.ru/my/balance?api_id=apfel&json=1&partner_id=331687",
         json={"status": "OK", "status_code": 100, "balance": 4762.58},
     )
     client = SMSru("apfel")

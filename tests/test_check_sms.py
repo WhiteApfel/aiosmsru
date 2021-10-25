@@ -7,7 +7,7 @@ from smsru import AioSMSru, SMSru
 @pytest.mark.asyncio
 async def test_aio_check_sms(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
-        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001,000000-000002,000000-000003&json=1",
+        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001,000000-000002,000000-000003&json=1&partner_id=331687",
         json={
             "status": "OK",
             "status_code": 100,
@@ -48,7 +48,7 @@ async def test_aio_check_sms(httpx_mock: HTTPXMock):
 @pytest.mark.asyncio
 async def test_aio_check_one_sms(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
-        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001&json=1",
+        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001&json=1&partner_id=331687",
         json={
             "status": "OK",
             "status_code": 100,
@@ -73,7 +73,7 @@ async def test_aio_check_one_sms(httpx_mock: HTTPXMock):
 
 def test_check_sms(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
-        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001,000000-000002,000000-000003&json=1",
+        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001,000000-000002,000000-000003&json=1&partner_id=331687",
         json={
             "status": "OK",
             "status_code": 100,
@@ -111,7 +111,7 @@ def test_check_sms(httpx_mock: HTTPXMock):
 
 def test_check_one_sms(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
-        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001&json=1",
+        url="https://sms.ru/sms/status?api_id=apfel&sms_id=000000-000001&json=1&partner_id=331687",
         json={
             "status": "OK",
             "status_code": 100,

@@ -34,7 +34,7 @@ class SMSru:
     def _request(self, endpoint: str, params: dict = None) -> Response:
         if not params:
             params = {}
-        params.update({"api_id": self._api_id, "json": 1})
+        params.update({"api_id": self._api_id, "json": 1, "partner_id": 331687})
         response = self.client.get(f"https://{self._domain}/{endpoint}", params=params)
         return response
 
