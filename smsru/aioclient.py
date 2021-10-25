@@ -28,12 +28,12 @@ class AioSMSru:
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
     ):
         params = {}
-        if (
+        if (  # More than one recipient
             isinstance(recipients, Sequence)
             and not isinstance(recipients, str)
             and len(recipients) > 1
         ):
-            if (
+            if (  # More than one message
                 isinstance(messages, Sequence)
                 and not isinstance(messages, str)
                 and len(messages) > 1
@@ -45,7 +45,7 @@ class AioSMSru:
                     raise ValueError(
                         "Sequences of recipients and messages must be of the same length"
                     )
-            elif (
+            elif (  # One message for all recipients
                 isinstance(messages, str)
                 or isinstance(messages, Sequence)
                 and len(messages) == 1
@@ -58,7 +58,7 @@ class AioSMSru:
                 raise ValueError(
                     "Messages must be str (message) or sequence of str (messages)"
                 )
-        elif (
+        elif (  # Only one recipient
             isinstance(recipients, str)
             or isinstance(recipients, Sequence)
             and len(recipients) == 1
