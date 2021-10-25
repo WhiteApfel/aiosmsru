@@ -6,7 +6,7 @@ else:
     from typing import Sequence
 from httpx import AsyncClient, Response
 
-from smsru.models.sms import SMSruSendSmsResponse
+from smsru.models.sms import SMSruSendSmsResponse, SMSruCheckSmsResponse
 
 
 class AioSMSru:
@@ -88,3 +88,17 @@ class AioSMSru:
         response = await self._request("sms/send", params)
 
         return SMSruSendSmsResponse(**response.json())
+
+    async def check_sms(self, ids: Union[str, Sequence[str]]):
+        if isinstance(ids, str):
+            ids = [ids]
+        if not isinstance(ids, Sequence):
+            raise ValueError("ids must be str or sequence of str")
+
+        params = {
+            "sms_id": ",".join(ids)
+        }
+
+        response = await self._request("sms/status", params)
+
+        return SMSruCheckSmsResponse(**response.json())
