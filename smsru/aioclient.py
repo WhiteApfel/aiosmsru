@@ -9,7 +9,7 @@ class AioSMSru:
         self._client: Optional[AsyncClient] = None
 
     @property
-    def client(self):
+    def client(self) -> AsyncClient:
         if not self._client:
             self._client = AsyncClient()
         return self._client

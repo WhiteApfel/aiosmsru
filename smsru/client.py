@@ -9,7 +9,7 @@ class SMSru:
         self._client: Optional[Client] = None
 
     @property
-    def client(self):
+    def client(self) -> Client:
         if not self._client:
             self._client = Client()
         return self._client
