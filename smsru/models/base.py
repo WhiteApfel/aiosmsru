@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 
 
-class SMSruResponse(BaseModel):
+class SMSruBase(BaseModel):
     status: str
     status_code: int
 
 
-class SMSruWithBalance(SMSruResponse):
+class SMSruWithBalance(SMSruBase):
     balance: float

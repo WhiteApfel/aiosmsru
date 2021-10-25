@@ -1,1 +1,1 @@
-from .base import SMSruResponse, SMSruWithBalance
+from .base import SMSruBase, SMSruWithBalance
