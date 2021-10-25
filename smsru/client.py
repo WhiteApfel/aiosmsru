@@ -1,6 +1,8 @@
 from typing import Optional, Union
 import sys
 
+from smsru.models import SMSruWithBalance
+
 if sys.version_info >= (3, 9):
     from collections.abc import Sequence
 else:
@@ -26,7 +28,9 @@ class SMSru:
             self._client = Client()
         return self._client
 
-    def _request(self, endpoint: str, params) -> Response:
+    def _request(self, endpoint: str, params: dict = None) -> Response:
+        if not params:
+            params = {}
         params.update({"api_id": self._api_id, "json": 1})
         response = self.client.get(f"https://{self._domain}/{endpoint}", params=params)
         return response
@@ -164,3 +168,8 @@ class SMSru:
         response = self._request("sms/cost", params)
 
         return SMSruSmsCostResponse(**response.json())
+
+    def balance(self):
+        response = self._request("my/balance")
+
+        return SMSruWithBalance(**response.json())

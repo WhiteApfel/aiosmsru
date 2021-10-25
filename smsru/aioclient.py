@@ -1,6 +1,8 @@
 from typing import Optional, Union
 import sys
 
+from smsru.models import SMSruWithBalance
+
 if sys.version_info >= (3, 9):
     from collections.abc import Sequence
 else:
@@ -26,7 +28,9 @@ class AioSMSru:
             self._client = AsyncClient()
         return self._client
 
-    async def _request(self, endpoint: str, params) -> Response:
+    async def _request(self, endpoint: str, params: dict = None) -> Response:
+        if not params:
+            params = {}
         params.update({"api_id": self._api_id, "json": 1})
         response = await self.client.get(
             f"https://{self._domain}/{endpoint}", params=params
@@ -166,3 +170,8 @@ class AioSMSru:
         response = await self._request("sms/cost", params)
 
         return SMSruSmsCostResponse(**response.json())
+
+    async def balance(self):
+        response = await self._request("my/balance")
+
+        return SMSruWithBalance(**response.json())
