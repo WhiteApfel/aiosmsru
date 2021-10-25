@@ -4,6 +4,7 @@ import sys
 from smsru.models import SMSruWithBalance, SMSruBase
 from smsru.models.limits import SMSruLimit, SMSruFreeLimit
 from smsru.models.senders import SMSruSenders
+from smsru.models.stoplist import SMSruStoplist
 
 if sys.version_info >= (3, 9):
     from collections.abc import Sequence
@@ -210,4 +211,9 @@ class AioSMSru:
         )
 
         return SMSruBase(**response.json())
+
+    async def stoplist(self):
+        response = await self._request("stoplist/get")
+
+        return SMSruStoplist(**response.json())
 
