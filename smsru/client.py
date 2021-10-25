@@ -1,5 +1,5 @@
-from collections import Sequence
 from typing import Optional, Union
+from collections.abc import Sequence
 from httpx import Client, Response
 
 from smsru.models.sms import SMSruSendSmsResponse
