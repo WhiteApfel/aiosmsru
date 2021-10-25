@@ -1,6 +1,6 @@
 from typing import Optional, Union
 import sys
-if sys.version >= (3, 9):
+if sys.version_info >= (3, 9):
     from collections.abc import Sequence
 else:
     from typing import Sequence
