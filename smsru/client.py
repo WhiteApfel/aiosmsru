@@ -1,5 +1,5 @@
 from typing import Optional
-from httpx import Client
+from httpx import Client, Response
 
 
 class SMSru:
@@ -14,7 +14,7 @@ class SMSru:
             self._client = Client()
         return self._client
 
-    def _request(self, endpoint: str, **params):
+    def _request(self, endpoint: str, **params) -> Response:
         params.update({"api_id": self._api_id, "json": 1})
         response = self.client.get(f"https://{self._domain}/{endpoint}", params=params)
         return response
