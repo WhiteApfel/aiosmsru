@@ -1,2 +1,2 @@
-httpx~=0.18.2
+httpx~=0.20.0
 pydantic~=1.8.2
