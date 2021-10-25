@@ -3,7 +3,7 @@
 
 - [x] Send SMS
 - [x] Check SMS status
-- [ ] Get SMS cost
+- [x] Get SMS cost
 - [ ] Get balance
 - [ ] Get limit
 - [ ] Get free limit
