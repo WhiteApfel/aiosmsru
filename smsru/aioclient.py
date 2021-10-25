@@ -16,5 +16,7 @@ class AioSMSru:
 
     async def _request(self, endpoint: str, **params) -> Response:
         params.update({"api_id": self._api_id, "json": 1})
-        response = await self.client.get(f"https://{self._domain}/{endpoint}", params=params)
+        response = await self.client.get(
+            f"https://{self._domain}/{endpoint}", params=params
+        )
         return response
