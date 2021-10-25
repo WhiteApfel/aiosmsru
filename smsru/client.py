@@ -22,32 +22,62 @@ class SMSru:
         response = self.client.get(f"https://{self._domain}/{endpoint}", params=params)
         return response
 
-    def send_sms(self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]):
+    def send_sms(
+        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
+    ):
         params = dict()
-        if isinstance(recipients, Sequence) and not isinstance(recipients, str) and len(recipients) > 1:
-            if isinstance(messages, Sequence) and not isinstance(messages, str) and len(messages) > 1:
+        if (
+            isinstance(recipients, Sequence)
+            and not isinstance(recipients, str)
+            and len(recipients) > 1
+        ):
+            if (
+                isinstance(messages, Sequence)
+                and not isinstance(messages, str)
+                and len(messages) > 1
+            ):
                 if len(recipients) == len(messages):
                     for i, recipient in enumerate(recipients):
                         params[f"to[{recipient}]"] = messages[i]
                 else:
-                    raise ValueError("Sequences of recipients and messages must be of the same length")
-            elif isinstance(messages, str) or isinstance(messages, Sequence) and len(messages) == 1:
+                    raise ValueError(
+                        "Sequences of recipients and messages must be of the same length"
+                    )
+            elif (
+                isinstance(messages, str)
+                or isinstance(messages, Sequence)
+                and len(messages) == 1
+            ):
                 if isinstance(messages, Sequence):
                     messages = messages[0]
                 params["to"] = ",".join(recipients)
                 params["msg"] = messages
             else:
-                raise ValueError("Messages must be str (message) or sequence of str (messages)")
-        elif isinstance(recipients, str) or isinstance(recipients, Sequence) and len(recipients) == 1:
-            if isinstance(messages, str) or isinstance(messages, Sequence) and len(messages) == 1:
+                raise ValueError(
+                    "Messages must be str (message) or sequence of str (messages)"
+                )
+        elif (
+            isinstance(recipients, str)
+            or isinstance(recipients, Sequence)
+            and len(recipients) == 1
+        ):
+            if (
+                isinstance(messages, str)
+                or isinstance(messages, Sequence)
+                and len(messages) == 1
+            ):
                 if isinstance(messages, Sequence):
                     messages = messages[0]
                 params["to"] = recipients
                 params["msg"] = messages
             else:
-                raise ValueError("If there is only one recipient, then there can be no more than one message")
+                raise ValueError(
+                    "If there is only one recipient, then there can be no more than one message"
+                )
         else:
-            raise ValueError("Recipients must be str (phone number) or sequence of str (phone numbers)")
+            raise ValueError(
+                "Recipients must be str (phone number) or sequence of str (phone numbers)"
+            )
 
         response = self._request("sms/send", params)
 
