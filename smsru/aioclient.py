@@ -1,7 +1,7 @@
 from typing import Optional, Union
 import sys
 
-from smsru.models import SMSruWithBalance
+from smsru.models import SMSruWithBalance, SMSruBase
 from smsru.models.limits import SMSruLimit, SMSruFreeLimit
 from smsru.models.senders import SMSruSenders
 
@@ -196,3 +196,18 @@ class AioSMSru:
         response = await self._request("my/senders")
 
         return SMSruSenders(**response.json())
+
+    async def check_auth(self, api_id: str = None, login: str = None, password: str = None):
+        if api_id:
+            params = {"api_id": api_id}
+        elif login and password:
+            params = {"login": login, "password": password}
+        else:
+            raise ValueError("You must provide api_id or login and password")
+
+        response = await self.client.get(
+            f"https://{self._domain}/auth/check", params=params
+        )
+
+        return SMSruBase(**response.json())
+
