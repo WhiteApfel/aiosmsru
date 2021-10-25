@@ -27,7 +27,7 @@ class AioSMSru:
     async def send_sms(
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
     ):
-        params = dict()
+        params = {}
         if (
             isinstance(recipients, Sequence)
             and not isinstance(recipients, str)
