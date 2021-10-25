@@ -33,7 +33,7 @@ class SMSru:
 
     def send_sms(
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
-    ):
+    ) -> SMSruSendSmsResponse:
         params = {}
         if (  # More than one recipient
             isinstance(recipients, Sequence)
@@ -92,7 +92,7 @@ class SMSru:
 
         return SMSruSendSmsResponse(**response.json())
 
-    def check_sms(self, ids: Union[str, Sequence[str]]):
+    def check_sms(self, ids: Union[str, Sequence[str]]) -> SMSruCheckSmsResponse:
         if isinstance(ids, str):
             ids = [ids]
         if not isinstance(ids, Sequence):
@@ -106,7 +106,7 @@ class SMSru:
 
     def sms_cost(
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
-    ):
+    ) -> SMSruSmsCostResponse:
         params = {}
         if (  # More than one recipient
             isinstance(recipients, Sequence)

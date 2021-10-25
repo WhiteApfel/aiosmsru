@@ -35,7 +35,7 @@ class AioSMSru:
 
     async def send_sms(
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
-    ):
+    ) -> SMSruSendSmsResponse:
         params = {}
         if (  # More than one recipient
             isinstance(recipients, Sequence)
@@ -94,7 +94,7 @@ class AioSMSru:
 
         return SMSruSendSmsResponse(**response.json())
 
-    async def check_sms(self, ids: Union[str, Sequence[str]]):
+    async def check_sms(self, ids: Union[str, Sequence[str]]) -> SMSruCheckSmsResponse:
         if isinstance(ids, str):
             ids = [ids]
         if not isinstance(ids, Sequence):
@@ -108,7 +108,7 @@ class AioSMSru:
 
     def sms_cost(
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
-    ):
+    ) -> SMSruSmsCostResponse:
         params = {}
         if (  # More than one recipient
             isinstance(recipients, Sequence)
