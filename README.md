@@ -4,8 +4,8 @@
 - [x] Check SMS status
 - [x] Get SMS cost
 - [x] Get balance
-- [ ] Get limit
-- [ ] Get free limit
+- [x] Get limit
+- [x] Get free limit
 - [ ] Get my senders
 - [ ] Check login/password
 - [ ] Add to stoplist
