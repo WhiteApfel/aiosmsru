@@ -1,5 +1,9 @@
 from typing import Optional, Union
-from collections.abc import Sequence
+import sys
+if sys.version >= (3, 9):
+    from collections.abc import Sequence
+else:
+    from typing import Sequence
 from httpx import Client, Response
 
 from smsru.models.sms import SMSruSendSmsResponse
