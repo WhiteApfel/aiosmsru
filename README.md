@@ -6,8 +6,8 @@
 - [x] Get balance
 - [x] Get limit
 - [x] Get free limit
-- [ ] Get my senders
-- [ ] Check login/password
+- [x] Get my senders
+- [x] Check api_id or login and password
 - [ ] Add to stoplist
 - [ ] Remove from stoplist
 - [ ] Get stoplist
