@@ -106,7 +106,7 @@ class AioSMSru:
 
         return SMSruCheckSmsResponse(**response.json())
 
-    def sms_cost(
+    async def sms_cost(
         self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]]
     ) -> SMSruSmsCostResponse:
         params = {}
