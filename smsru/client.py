@@ -48,7 +48,7 @@ class SMSru:
                 or isinstance(messages, Sequence)
                 and len(messages) == 1
             ):
-                if isinstance(messages, Sequence):
+                if isinstance(messages, Sequence) and not isinstance(messages, str):
                     messages = messages[0]
                 params["to"] = ",".join(recipients)
                 params["msg"] = messages
@@ -66,7 +66,7 @@ class SMSru:
                 or isinstance(messages, Sequence)
                 and len(messages) == 1
             ):
-                if isinstance(messages, Sequence):
+                if isinstance(messages, Sequence) and not isinstance(messages, str):
                     messages = messages[0]
                 params["to"] = recipients
                 params["msg"] = messages
