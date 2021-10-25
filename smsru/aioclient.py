@@ -1,5 +1,6 @@
 from typing import Optional, Union
 import sys
+
 if sys.version_info >= (3, 9):
     from collections.abc import Sequence
 else:
@@ -95,9 +96,7 @@ class AioSMSru:
         if not isinstance(ids, Sequence):
             raise ValueError("ids must be str or sequence of str")
 
-        params = {
-            "sms_id": ",".join(ids)
-        }
+        params = {"sms_id": ",".join(ids)}
 
         response = await self._request("sms/status", params)
 
