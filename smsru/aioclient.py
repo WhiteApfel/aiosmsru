@@ -222,7 +222,7 @@ class AioSMSru:
 
         return SMSruSmsCostResponse(**response.json())
 
-    async def balance(self):
+    async def balance(self) -> SMSruWithBalance:
         """
         Get account balance
 
@@ -233,7 +233,7 @@ class AioSMSru:
 
         return SMSruWithBalance(**response.json())
 
-    async def limit(self):
+    async def limit(self) -> SMSruLimit:
         """
         Get account sms limits
 
@@ -244,7 +244,7 @@ class AioSMSru:
 
         return SMSruLimit(**response.json())
 
-    async def free_limit(self):
+    async def free_limit(self) -> SMSruFreeLimit:
         """
         Get account free sms limit
 
@@ -255,7 +255,7 @@ class AioSMSru:
 
         return SMSruFreeLimit(**response.json())
 
-    async def senders(self):
+    async def senders(self) -> SMSruSenders:
         """
         Get approved senders
 
@@ -268,7 +268,7 @@ class AioSMSru:
 
     async def check_auth(
         self, api_id: str = None, login: str = None, password: str = None
-    ):
+    ) -> SMSruBase:
         """
         Check username/password or app_id for validity.
         Be sure to specify api_id or login and password
@@ -295,7 +295,7 @@ class AioSMSru:
 
         return SMSruBase(**response.json())
 
-    async def stoplist(self):
+    async def stoplist(self) -> SMSruStoplist:
         response = await self._request("stoplist/get")
 
         return SMSruStoplist(**response.json())

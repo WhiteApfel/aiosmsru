@@ -220,7 +220,7 @@ class SMSru:
 
         return SMSruSmsCostResponse(**response.json())
 
-    def balance(self):
+    def balance(self) -> SMSruWithBalance:
         """
         Get account balance
 
@@ -231,7 +231,7 @@ class SMSru:
 
         return SMSruWithBalance(**response.json())
 
-    def limit(self):
+    def limit(self) -> SMSruLimit:
         """
         Get account sms limits
 
@@ -242,7 +242,7 @@ class SMSru:
 
         return SMSruLimit(**response.json())
 
-    def free_limit(self):
+    def free_limit(self) -> SMSruFreeLimit:
         """
         Get account free sms limit
 
@@ -253,7 +253,7 @@ class SMSru:
 
         return SMSruFreeLimit(**response.json())
 
-    def senders(self):
+    def senders(self) -> SMSruSenders:
         """
         Get approved senders
 
@@ -264,7 +264,7 @@ class SMSru:
 
         return SMSruSenders(**response.json())
 
-    def check_auth(self, api_id: str = None, login: str = None, password: str = None):
+    def check_auth(self, api_id: str = None, login: str = None, password: str = None) -> SMSruBase:
         """
         Check username/password or app_id for validity.
         Be sure to specify api_id or login and password
@@ -289,7 +289,7 @@ class SMSru:
 
         return SMSruBase(**response.json())
 
-    def stoplist(self):
+    def stoplist(self) -> SMSruStoplist:
         response = self._request("stoplist/get")
 
         return SMSruStoplist(**response.json())
