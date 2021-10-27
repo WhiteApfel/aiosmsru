@@ -53,7 +53,8 @@ class SMSru:
 
         :param recipients: Phone number or their sequence
         :type recipients: ``str`` or sequence of ``str``
-        :param messages: Message or their sequence according to the sequence of recipients
+        :param messages: Message or their sequence according
+        to the sequence of recipients
         :param kwargs: ``str`` or sequence of ``str``
         :return: sms.ru response
         :rtype: SMSruSendSmsResponse
@@ -151,7 +152,8 @@ class SMSru:
 
         :param recipients: Phone number or their sequence
         :type recipients: ``str`` or sequence of ``str``
-        :param messages: Message or their sequence according to the sequence of recipients
+        :param messages: Message or their sequence according
+        to the sequence of recipients
         :type messages: ``str`` or sequence of ``str``
         :param kwargs: Other parameters according to the documentation sms.ru
         :return: sms.ru response
