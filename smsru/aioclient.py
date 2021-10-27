@@ -124,6 +124,13 @@ class AioSMSru:
         return SMSruSendSmsResponse(**response.json())
 
     async def check_sms(self, ids: Union[str, Sequence[str]]) -> SMSruCheckSmsResponse:
+        """
+        Check the status of one or more messages
+
+        :param ids: message identifier or sequence
+        :return: sms.ru response
+        :rtype: SMSruCheckSmsResponse
+        """
         if isinstance(ids, str):
             ids = [ids]
         if not isinstance(ids, Sequence):
