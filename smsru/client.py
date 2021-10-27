@@ -44,6 +44,20 @@ class SMSru:
         messages: Union[str, Sequence[str]],
         **kwargs,
     ) -> SMSruSendSmsResponse:
+        """
+        Method for sending SMS.
+        Method can send one or more messages
+        with the same or different text.
+
+        For example, you can
+
+        :param recipients: Phone number or their sequence
+        :type recipients: ``str`` or sequence of ``str``
+        :param messages: Message or their sequence according to the sequence of recipients
+        :param kwargs: ``str`` or sequence of ``str``
+        :return: sms.ru response
+        :rtype: SMSruSendSmsResponse
+        """
         params = {}
         if (  # More than one recipient
             isinstance(recipients, Sequence)
