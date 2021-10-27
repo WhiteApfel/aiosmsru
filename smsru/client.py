@@ -39,7 +39,10 @@ class SMSru:
         return response
 
     def send_sms(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
+        self,
+        recipients: Union[str, Sequence[str]],
+        messages: Union[str, Sequence[str]],
+        **kwargs,
     ) -> SMSruSendSmsResponse:
         params = {}
         if (  # More than one recipient
@@ -114,7 +117,10 @@ class SMSru:
         return SMSruCheckSmsResponse(**response.json())
 
     def sms_cost(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
+        self,
+        recipients: Union[str, Sequence[str]],
+        messages: Union[str, Sequence[str]],
+        **kwargs,
     ) -> SMSruSmsCostResponse:
         params = {}
         if (  # More than one recipient
@@ -204,9 +210,7 @@ class SMSru:
         else:
             raise ValueError("You must provide api_id or login and password")
 
-        response = self.client.get(
-            f"https://{self._domain}/auth/check", params=params
-        )
+        response = self.client.get(f"https://{self._domain}/auth/check", params=params)
 
         return SMSruBase(**response.json())
 

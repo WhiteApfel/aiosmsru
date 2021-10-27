@@ -8,7 +8,11 @@ from smsru import AioSMSru, SMSru
 async def test_aio_senders(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
         url="https://sms.ru/my/senders?api_id=apfel&json=1&partner_id=331687",
-        json={"status": "OK", "status_code": 100, "senders": ["pfelservice", "pfelstore"]},
+        json={
+            "status": "OK",
+            "status_code": 100,
+            "senders": ["pfelservice", "pfelstore"],
+        },
     )
     client = AioSMSru("apfel")
     response = await client.senders()
@@ -21,7 +25,11 @@ async def test_aio_senders(httpx_mock: HTTPXMock):
 def test_senders(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
         url="https://sms.ru/my/senders?api_id=apfel&json=1&partner_id=331687",
-        json={"status": "OK", "status_code": 100, "senders": ["pfelservice", "pfelstore"]},
+        json={
+            "status": "OK",
+            "status_code": 100,
+            "senders": ["pfelservice", "pfelstore"],
+        },
     )
     client = SMSru("apfel")
     response = client.senders()

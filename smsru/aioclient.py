@@ -41,7 +41,10 @@ class AioSMSru:
         return response
 
     async def send_sms(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
+        self,
+        recipients: Union[str, Sequence[str]],
+        messages: Union[str, Sequence[str]],
+        **kwargs,
     ) -> SMSruSendSmsResponse:
         params = {}
         if (  # More than one recipient
@@ -116,7 +119,10 @@ class AioSMSru:
         return SMSruCheckSmsResponse(**response.json())
 
     async def sms_cost(
-        self, recipients: Union[str, Sequence[str]], messages: Union[str, Sequence[str]], **kwargs
+        self,
+        recipients: Union[str, Sequence[str]],
+        messages: Union[str, Sequence[str]],
+        **kwargs,
     ) -> SMSruSmsCostResponse:
         params = {}
         if (  # More than one recipient
@@ -198,7 +204,9 @@ class AioSMSru:
 
         return SMSruSenders(**response.json())
 
-    async def check_auth(self, api_id: str = None, login: str = None, password: str = None):
+    async def check_auth(
+        self, api_id: str = None, login: str = None, password: str = None
+    ):
         if api_id:
             params = {"api_id": api_id}
         elif login and password:
@@ -216,4 +224,3 @@ class AioSMSru:
         response = await self._request("stoplist/get")
 
         return SMSruStoplist(**response.json())
-
