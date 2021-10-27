@@ -223,21 +223,45 @@ class AioSMSru:
         return SMSruSmsCostResponse(**response.json())
 
     async def balance(self):
+        """
+        Get account balance
+
+        :return: sms.ru response
+        :rtype: SMSruWithBalance
+        """
         response = await self._request("my/balance")
 
         return SMSruWithBalance(**response.json())
 
     async def limit(self):
+        """
+        Get account sms limits
+
+        :return: sms.ru response
+        :rtype: SMSruLimit
+        """
         response = await self._request("my/limit")
 
         return SMSruLimit(**response.json())
 
     async def free_limit(self):
+        """
+        Get account free sms limit
+
+        :return: sms.ru response
+        :rtype: SMSruFreeLimit
+        """
         response = await self._request("my/free")
 
         return SMSruFreeLimit(**response.json())
 
     async def senders(self):
+        """
+        Get approved senders
+
+        :return: sms.ru response
+        :rtype: SMSruSenders
+        """
         response = await self._request("my/senders")
 
         return SMSruSenders(**response.json())
@@ -245,6 +269,19 @@ class AioSMSru:
     async def check_auth(
         self, api_id: str = None, login: str = None, password: str = None
     ):
+        """
+        Check username/password or app_id for validity.
+        Be sure to specify api_id or login and password
+
+        :param api_id: api_id
+        :type api_id: ``str``
+        :param login: login (phone number in 79996662244 format)
+        :type login: ``str``
+        :param password: password
+        :type password: ``str``
+        :return: sms.ru response
+        :rtype: SMSruBase
+        """
         if api_id:
             params = {"api_id": api_id}
         elif login and password:
