@@ -148,6 +148,17 @@ class AioSMSru:
         messages: Union[str, Sequence[str]],
         **kwargs,
     ) -> SMSruSmsCostResponse:
+        """
+        Get the cost of sending a specific message to a specific number
+
+        :param recipients: Phone number or their sequence
+        :type recipients: ``str`` or sequence of ``str``
+        :param messages: Message or their sequence according to the sequence of recipients
+        :type messages: ``str`` or sequence of ``str``
+        :param kwargs: Other parameters according to the documentation sms.ru
+        :return: sms.ru response
+        :rtype: SMSruSmsCostResponse
+        """
         params = {}
         if (  # More than one recipient
             isinstance(recipients, Sequence)
