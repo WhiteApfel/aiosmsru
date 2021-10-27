@@ -264,7 +264,9 @@ class SMSru:
 
         return SMSruSenders(**response.json())
 
-    def check_auth(self, api_id: str = None, login: str = None, password: str = None) -> SMSruBase:
+    def check_auth(
+        self, api_id: str = None, login: str = None, password: str = None
+    ) -> SMSruBase:
         """
         Check username/password or app_id for validity.
         Be sure to specify api_id or login and password
