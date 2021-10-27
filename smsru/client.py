@@ -60,7 +60,8 @@ class SMSru:
                         params[f"to[{recipient}]"] = messages[i]
                 else:
                     raise ValueError(
-                        "Sequences of recipients and messages must be of the same length"
+                        "Sequences of recipients and messages "
+                        "must be of the same length"
                     )
             elif (  # One message for all recipients
                 isinstance(messages, str)
@@ -73,7 +74,7 @@ class SMSru:
                 params["msg"] = messages
             else:
                 raise ValueError(
-                    "Messages must be str (message) or sequence of str (messages)"
+                    "Messages must be str (message) " "or sequence of str (messages)"
                 )
         elif (  # Only one recipient
             isinstance(recipients, str)
@@ -91,11 +92,13 @@ class SMSru:
                 params["msg"] = messages
             else:
                 raise ValueError(
-                    "If there is only one recipient, then there can be no more than one message"
+                    "If there is only one recipient, "
+                    "then there can be no more than one message"
                 )
         else:
             raise ValueError(
-                "Recipients must be str (phone number) or sequence of str (phone numbers)"
+                "Recipients must be str (phone number) "
+                "or sequence of str (phone numbers)"
             )
 
         params.update(kwargs)
@@ -138,7 +141,8 @@ class SMSru:
                         params[f"to[{recipient}]"] = messages[i]
                 else:
                     raise ValueError(
-                        "Sequences of recipients and messages must be of the same length"
+                        "Sequences of recipients and messages "
+                        "must be of the same length"
                     )
             elif (  # One message for all recipients
                 isinstance(messages, str)
@@ -151,7 +155,7 @@ class SMSru:
                 params["msg"] = messages
             else:
                 raise ValueError(
-                    "Messages must be str (message) or sequence of str (messages)"
+                    "Messages must be str (message) " "or sequence of str (messages)"
                 )
         elif (  # Only one recipient
             isinstance(recipients, str)
@@ -169,11 +173,13 @@ class SMSru:
                 params["msg"] = messages
             else:
                 raise ValueError(
-                    "If there is only one recipient, then there can be no more than one message"
+                    "If there is only one recipient, "
+                    "then there can be no more than one message"
                 )
         else:
             raise ValueError(
-                "Recipients must be str (phone number) or sequence of str (phone numbers)"
+                "Recipients must be str (phone number) "
+                "or sequence of str (phone numbers)"
             )
 
         params.update(kwargs)
