@@ -2,6 +2,7 @@ from typing import Optional, Union
 import sys
 
 from smsru.models import SMSruWithBalance, SMSruBase
+from smsru.models.callcheck import SMSruCallcheck
 from smsru.models.limits import SMSruLimit, SMSruFreeLimit
 from smsru.models.senders import SMSruSenders
 from smsru.models.stoplist import SMSruStoplist
@@ -298,6 +299,34 @@ class AioSMSru:
         return SMSruBase(**response.json())
 
     async def stoplist(self) -> SMSruStoplist:
+        """
+        Return stoplist in dict format:
+
+        SMSruStoplist.stoplist = {
+            "79998887766": "Any note",
+            "79996667788": "Any note"
+        }
+
+        :return: sms.ru response
+        :rtype: SMSruStoplist
+        """
         response = await self._request("stoplist/get")
 
         return SMSruStoplist(**response.json())
+
+    async def callcheck(self, phone: str, ip: str = "-1") -> SMSruCallcheck:
+        """
+        Call a `phone` from number ending in `SMSruCallcheck.code`
+
+        :param phone: phone number
+        :param ip: IP address of client (needed for antimpam system) or `-1`
+        :return: sms.ru response
+        :rtype: SMSruCallcheck
+        """
+        params = {
+            "phone": phone,
+            "ip": ip,
+        }
+        response = await self._request("code/call", params=params)
+
+        return SMSruCallcheck(**response.json())

@@ -10,11 +10,11 @@
 - [x] Check api_id or login and password
 - [ ] Add to stoplist
 - [ ] Remove from stoplist
-- [ ] Get stoplist
+- [x] Get stoplist
 - [ ] Add callback
 - [ ] Remove callback
 - [ ] Get callbacks
-- [ ] Callcheck
+- [x] Callcheck
 
 ## 🧑‍💻 How to use
 
@@ -30,7 +30,7 @@ async def main():
     print(await client.sms_cost("79991398805", "I'm in serious shit"))
     
     # 79991398805 and 79956896018 <- I feel totally lost
-    sensed = await client.send_sms(
+    scend = await client.send_sms(
         recipients=['79991398805', '79956896018'],
         messages="I feel totally lost"
     )
@@ -38,8 +38,11 @@ async def main():
     
     # 79991398805 <- If i'm asking for help
     # 79956896018 <- it's only because
-    sensed = await client.send_sms(
+    scend = await client.send_sms(
         recipients=['79991398805', '79956896018'],
         messages=["If i'm asking for help", "it's only because"]
     )
+    
+    call = await client.callcheck('79991398805')
+    print(call.code == input("Last 4 digits of incoming call number: "))
 ```
